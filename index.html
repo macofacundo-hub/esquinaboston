@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Esquina Boston · Bar restaurante en Av. Bolivia y Boston</title>
+  <meta name="description" content="Milanesas de 28 cm sobre un colchón de fritas, papas, pizza y cerveza en la esquina de Av. Bolivia y Boston, Montevideo. De martes a domingo desde las 19:30.">
+  <meta name="theme-color" content="#140d08">
+  <link rel="icon" href="assets/img/logo-esquina-boston.jpg">
+  <link rel="preload" href="assets/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- piezas gráficas reutilizables: la tapita (chapita) y la estrella -->
+  <svg class="solo-lector" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="tapita" viewBox="0 0 120 120">
+        <polygon points="60.00,0.00 68.12,6.11 77.69,2.67 83.65,10.90 93.80,10.43 97.07,20.05 106.91,22.59 107.20,32.75 115.85,38.08 113.13,47.87 119.83,55.52 114.35,64.07 118.50,73.35 110.73,79.91 111.96,90.00 102.61,93.98 100.81,103.98 90.70,105.03 86.03,114.06 76.06,112.08 68.94,119.33 60.00,114.50 51.06,119.33 43.94,112.08 33.97,114.06 29.30,105.03 19.19,103.98 17.39,93.98 8.04,90.00 9.27,79.91 1.50,73.35 5.65,64.07 0.17,55.52 6.87,47.87 4.15,38.08 12.80,32.75 13.09,22.59 22.93,20.05 26.20,10.43 36.35,10.90 42.31,2.67 51.88,6.11"/>
+        <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="estrella" viewBox="0 0 24 24">
+        <path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3-5.6-3-5.6 3 1.1-6.3-4.6-4.4 6.3-.9L12 2.8Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <header class="cab" data-cab>
+    <div class="cab-in">
+      <a class="marca" href="#inicio" aria-label="Esquina Boston, ir al inicio">
+        <img src="assets/img/logo-esquina-boston.jpg" width="44" height="44" alt="">
+        <span>Esquina Boston</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal" data-nav>
+        <a href="#mega-mila">Mega Mila</a>
+        <a href="#carta">La carta</a>
+        <a href="#pedir">Cómo pedir</a>
+        <a href="#donde">Dónde estamos</a>
+      </nav>
+
+      <div class="cab-acc">
+        <p class="estado" data-estado data-abierto="false">
+          <span class="estado-luz" aria-hidden="true"></span>
+          <span data-estado-txt>Martes a domingo desde las 19:30</span>
+        </p>
+        <a class="btn btn-rojo btn-cab" href="https://www.pedidosya.com.uy/restaurantes/montevideo/esquina-boston-d99b48c8-0b94-44dc-a107-87a52b0e3396-menu" target="_blank" rel="noopener">Pedir</a>
+        <button class="ico menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="nav" data-menu>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- 1 · PORTADA · la etiqueta de la casa sobre la fachada de noche -->
+    <section class="portada" id="inicio" data-fondo="noche">
+      <picture class="portada-foto">
+        <source type="image/webp" srcset="assets/img/portada-fachada-900.webp 900w, assets/img/portada-fachada.webp 1500w" sizes="100vw">
+        <img src="assets/img/portada-fachada.jpg" width="1500" height="2000" alt="" fetchpriority="high">
+      </picture>
+      <div class="portada-velo" aria-hidden="true"></div>
+      <div class="portada-apagon" aria-hidden="true"></div>
+
+      <div class="portada-in">
+        <div class="etiqueta etiqueta-portada entra" style="--i:0" data-fondo="papel">
+          <h1>Mega Mila de 28&nbsp;cm.</h1>
+
+          <div class="etiqueta-banda">
+            <p><span>Sobre un colchón de fritas,</span> <span>con muzza y dos gustos a elección.</span></p>
+          </div>
+
+          <div class="etiqueta-cuerpo">
+            <div class="etiqueta-plato">
+              <picture>
+                <source type="image/webp" srcset="assets/cut/milaxx-720.webp">
+                <img src="assets/cut/milaxx-720.png" width="720" height="631" alt="La Mega Mila: milanesa redonda sobre un colchón de fritas, con cheddar fundido y panceta por encima." fetchpriority="high">
+              </picture>
+            </div>
+
+            <dl class="tamanos">
+              <div class="tamano">
+                <dt>Mini <small>20 cm</small></dt>
+                <dd class="num" data-precio="mila-mini">$645</dd>
+              </div>
+              <div class="tamano">
+                <dt>Mega <small>28 cm</small></dt>
+                <dd class="num" data-precio="mila-mega">$975</dd>
+              </div>
+              <div class="tamano">
+                <dt>Quepa <small>32 cm</small></dt>
+                <dd class="num" data-precio="mila-quepa">$1.725</dd>
+              </div>
+            </dl>
+
+            <div class="chapita chapita-google chapita-portada" role="img" aria-label="4,9 de 5 en Google, con 30 opiniones">
+              <svg class="chapita-forma" aria-hidden="true"><use href="#tapita"/></svg>
+              <span class="chapita-txt" aria-hidden="true">
+                <b class="num">4,9</b>
+                <span class="chapita-estrellas"><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg></span>
+                <span class="chapita-pie">30 opiniones<br>en Google</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="acciones">
+            <a class="btn btn-tinta" href="https://www.google.com/maps/dir/?api=1&destination=Esquina+Boston,+Av.+Bolivia+1400,+Montevideo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 0 0-13 0c0 5 6.5 11 6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+              Cómo llegar
+            </a>
+            <a class="btn btn-rojo" href="https://www.pedidosya.com.uy/restaurantes/montevideo/esquina-boston-d99b48c8-0b94-44dc-a107-87a52b0e3396-menu" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11h-11l-1-11Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+              Pedir por PedidosYa
+            </a>
+          </div>
+
+          <p class="etiqueta-meta">
+            <span class="estado" data-estado data-abierto="false">
+              <span class="estado-luz" aria-hidden="true"></span>
+              <span data-estado-txt>Martes a domingo desde las 19:30</span>
+            </span>
+            <span>Av. Bolivia 1400 esq. Boston, Montevideo</span>
+          </p>
+
+          <nav class="accesos" aria-label="Categorías de la carta">
+            <a href="#mega-mila"><span class="acc-nom">Mega Mila</span><span class="acc-pre">desde <b class="num" data-desde="mega-mila">$645</b></span></a>
+            <a href="#carta-brutales"><span class="acc-nom">Brutales</span><span class="acc-pre">desde <b class="num" data-desde="brutales">$595</b></span></a>
+            <a href="#carta-pizzas"><span class="acc-nom">Pizzas</span><span class="acc-pre">desde <b class="num" data-desde="pizzas">$250</b></span></a>
+            <a href="#carta-picadas"><span class="acc-nom">Picadas</span><span class="acc-pre">desde <b class="num" data-desde="picadas">$850</b></span></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · MEGA MILA · fondo papel -->
+    <section class="milaxx" id="mega-mila" data-fondo="papel">
+      <div class="envoltura milaxx-grid">
+        <div class="milaxx-media revela" style="--i:0">
+          <img class="milaxx-foto" src="assets/img/milaxx-cheddar.jpg" width="1244" height="1600" alt="Una Mega Mila recién salida: cheddar fundido y panceta sobre la milanesa, con las fritas debajo." loading="lazy">
+        </div>
+
+        <div class="milaxx-txt">
+          <h2 class="revela" style="--i:0">La Mega Mila.</h2>
+          <p class="milaxx-desc revela" style="--i:1">Colchón de fritas, milanesa, salsa de tomate, muzza y dos gustos a elección. La que nombran las reseñas: <q>la mejor milanesa de Uruguay</q>.</p>
+
+          <div class="milaxx-tam revela" style="--i:2">
+            <div class="tam">
+              <span class="tam-nom">Mini</span>
+              <span class="tam-med">20 cm de diámetro</span>
+              <span class="tam-pre num" data-precio="mila-mini">$645</span>
+            </div>
+            <div class="tam">
+              <span class="tam-nom">Mega</span>
+              <span class="tam-med">28 cm de diámetro</span>
+              <span class="tam-pre num" data-precio="mila-mega">$975</span>
+            </div>
+            <div class="tam">
+              <span class="tam-nom">Quepa</span>
+              <span class="tam-med">32 cm de diámetro</span>
+              <span class="tam-pre num" data-precio="mila-quepa">$1.725</span>
+            </div>
+          </div>
+
+          <div class="milaxx-gustos revela" style="--i:3">
+            <p class="gustos-lead">Los 2 gustos a elección, sin cargo, se piden por teléfono o en PedidosYa:</p>
+            <ul class="gustos-grilla">
+              <li>Albahaca</li><li>Cebolla</li><li>Cheddar</li><li>Ciboulette</li><li>Jamón</li><li>Morrón</li>
+              <li>Panceta</li><li>Aceitunas</li><li>Huevo</li><li>Champiñón</li><li>Longaniza</li>
+              <li>Rúcula</li><li>Tomate</li>
+            </ul>
+          </div>
+
+          <div class="milaxx-cta revela" style="--i:4">
+            <a class="btn btn-rojo" href="https://www.pedidosya.com.uy/restaurantes/montevideo/esquina-boston-d99b48c8-0b94-44dc-a107-87a52b0e3396-menu" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11h-11l-1-11Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+              Pedir por PedidosYa
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · NOVEDADES · fondo noche · cinta infinita de Instagram -->
+    <section class="novedades" id="novedades" data-fondo="noche">
+      <div class="envoltura tit-fila">
+        <h2 class="revela" style="--i:0">Lo último en Instagram.</h2>
+        <a class="tit-link revela" style="--i:1" href="https://www.instagram.com/esq.boston/" target="_blank" rel="noopener">
+          Seguinos en @esq.boston
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+
+      <div class="cinta revela" style="--i:2" data-cinta>
+        <div class="cinta-pista" data-cinta-pista>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DcUQhLRvSx3/" target="_blank" rel="noopener">
+            <img src="assets/img/ig-estamos-abiertos.jpg" width="512" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-08-21">21 de agosto</time><span>Los esperamos en La Esquina!</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DaY9dTrjR_m/" target="_blank" rel="noopener">
+            <img src="assets/img/musica-en-vivo.jpg" width="640" height="480" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-07-04">4 de julio</time><span>Ayer la esquina se llenó de buena onda y gente linda.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DaLvcZFvkQ8/" target="_blank" rel="noopener">
+            <img src="assets/img/ig-matias-diego.jpg" width="512" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-06-29">29 de junio</time><span>Viernes de música, comida y amigos con Matías Diego.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DXu1OlNDzo5/" target="_blank" rel="noopener">
+            <img src="assets/img/chivitos.jpg" width="480" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-04-29">29 de abril</time><span>El antojo tiene nombre: chivito de Esquina Boston.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DXKx1fIj9cU/" target="_blank" rel="noopener">
+            <img src="assets/img/esquina-noche.jpg" width="480" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-04-15">15 de abril</time><span>Hoy la noche pide Esquina Boston.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DWrqCtaDWQS/" target="_blank" rel="noopener">
+            <img src="assets/img/milaxx-bandeja.jpg" width="480" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-03-30">30 de marzo</time><span>Razones para venir a Esquina Boston no faltan.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DWj7seJDbwN/" target="_blank" rel="noopener">
+            <img src="assets/img/mega-tenedor.jpg" width="480" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-03-30">30 de marzo</time><span>Tus noches mejoran un 100% con una MEGA.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DWE-vb-DVGN/" target="_blank" rel="noopener">
+            <img src="assets/img/ig-un-mes.jpg" width="553" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-03-19">19 de marzo</time><span>Buena música, buena comida, buena cerveza.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DVzVmhND_rm/" target="_blank" rel="noopener">
+            <img src="assets/img/ig-delivery.jpg" width="553" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-03-12">12 de marzo</time><span>Te llevamos la Mega Mila hasta tu casa.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DVj5awRj596/" target="_blank" rel="noopener">
+            <img src="assets/img/cartel-neon.jpg" width="553" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-03-06">6 de marzo</time><span>Un poco de lo que fue la apertura.</span></span>
+          </a>
+          <a class="post" href="https://www.instagram.com/esq.boston/p/DU380CzD5L5/" target="_blank" rel="noopener">
+            <img src="assets/img/ig-inauguramos.jpg" width="552" height="640" alt="" loading="lazy">
+            <span class="post-txt"><time datetime="2026-02-17">17 de febrero</time><span>El nuevo lugar para juntarse y pasarla bien.</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · LA CARTA · fondo acero, la hoja impresa encima -->
+    <section class="carta" id="carta" data-fondo="acero">
+      <div class="envoltura">
+        <div class="tit-fila">
+          <h2 class="revela" style="--i:0">La carta.</h2>
+          <a class="btn btn-rojo revela" style="--i:1" href="https://www.pedidosya.com.uy/restaurantes/montevideo/esquina-boston-d99b48c8-0b94-44dc-a107-87a52b0e3396-menu" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11h-11l-1-11Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+            Pedir por PedidosYa
+          </a>
+        </div>
+
+        <div class="hoja revela" style="--i:2" data-fondo="papel">
+          <div class="hoja-col">
+            <div class="cat" id="carta-mega-mila">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Mega Mila</h3>
+                  <p class="cat-desc">Colchón de fritas, milanesa, salsa de tomate, muzza y dos gustos a elección.</p>
+                </div>
+                <picture class="cat-foto">
+                  <source type="image/webp" srcset="assets/cut/milaxx-720.webp">
+                  <img src="assets/cut/milaxx-720.png" width="720" height="631" alt="" loading="lazy">
+                </picture>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-mila-mini"><span class="item-nom">Mini</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-mini"></span><small class="item-det">Mila de 20 cm de diámetro</small></li>
+                <li class="item" id="carta-mila-mega"><span class="item-nom">Mega</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-mega"></span><small class="item-det">Mila de 28 cm de diámetro</small></li>
+                <li class="item" id="carta-mila-quepa"><span class="item-nom">Quepa</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-quepa"></span><small class="item-det">Mila de 32 cm de diámetro</small></li>
+                <li class="item" id="carta-mega-boston"><span class="item-nom">Mega Boston</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mega-boston"></span><small class="item-det">Mila de 28 cm, cheddar, panceta, alioli, cebolla crispy, 4 huevos fritos y fritas x2</small></li>
+                <li class="item" id="carta-mega-asesina"><span class="item-nom">Mega Asesina</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mega-asesina"></span><small class="item-det">Mila de 28 cm entre dos pizzetas, con jamón, panceta, muzza, lechuga, tomate, aceitunas, morrón, cebolla, mayonesa y arriba salsa, más muzza y 4 huevos fritos</small></li>
+                <li class="item" id="carta-mega-chivito"><span class="item-nom">Mega Chivito</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mega-chivito"></span><small class="item-det">Chivito de 28 cm entre dos pizzetas, con jamón, panceta, muzza, huevo duro, lechuga, tomate, aceitunas, morrón, cebolla, mayonesa, y arriba más muzza y cebolla crispy</small></li>
+              </ul>
+              <p class="cat-gustos"><b>Gustos:</b> albahaca · cebolla · cheddar · ciboulette · jamón · morrón · panceta · aceitunas · huevo · champiñón · longaniza · rúcula · tomate</p>
+            </div>
+
+            <div class="cat" id="carta-porciones">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Porciones</h3>
+                </div>
+                <picture class="cat-foto cat-foto-papas">
+                  <source type="image/webp" srcset="assets/cut/papas-640.webp">
+                  <img src="assets/cut/papas-640.png" width="640" height="276" alt="" loading="lazy">
+                </picture>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-papas-porcion"><span class="item-nom">Porción de papas</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="papas-porcion"></span></li>
+                <li class="item" id="carta-papas-cheddar"><span class="item-nom">Cheddar</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="papas-cheddar"></span></li>
+                <li class="item" id="carta-papas-panceta"><span class="item-nom">Cheddar y panceta</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="papas-panceta"></span></li>
+                <li class="item" id="carta-papas-champi"><span class="item-nom">Champi</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="papas-champi"></span></li>
+                <li class="item" id="carta-papas-gramajo"><span class="item-nom">Gramajo</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="papas-gramajo"></span></li>
+                <li class="item" id="carta-tequenos"><span class="item-nom">Tequeños</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="tequenos"></span></li>
+              </ul>
+            </div>
+
+            <div class="cat" id="carta-calientes">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Calientes</h3>
+                </div>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-caliente-clasico"><span class="item-nom">Clásico</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="caliente-clasico"></span></li>
+                <li class="item" id="carta-caliente-caprese"><span class="item-nom">Caprese</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="caliente-caprese"></span></li>
+                <li class="item" id="carta-caliente-completo"><span class="item-nom">Completo</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="caliente-completo"></span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="hoja-col">
+            <div class="cat" id="carta-brutales">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Brutales</h3>
+                </div>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-chivito"><span class="item-nom">Chivito</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="chivito"></span></li>
+                <li class="item" id="carta-asesina"><span class="item-nom">Asesina</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="asesina"></span></li>
+                <li class="item" id="carta-napolitana"><span class="item-nom">Milanesa napolitana</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="napolitana"></span></li>
+                <li class="item" id="carta-promo-chivitos"><span class="item-nom">Promo 2 chivitos + refresco 1,5 L</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="promo-chivitos"></span></li>
+                <li class="item" id="carta-promo-napo"><span class="item-nom">Promo 2 napo + refresco 1,5 L</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="promo-napo"></span></li>
+                <li class="item" id="carta-mila-pan"><span class="item-nom">Mila al pan</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-pan"></span><small class="item-det">Sin fritas</small></li>
+                <li class="item" id="carta-mila-pan-fritas"><span class="item-nom">Mila al pan con fritas</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-pan-fritas"></span></li>
+                <li class="item" id="carta-mila-dos-panes"><span class="item-nom">Mila en dos panes</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-dos-panes"></span><small class="item-det">Sin fritas</small></li>
+                <li class="item" id="carta-mila-dos-fritas"><span class="item-nom">Mila en dos panes con fritas</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="mila-dos-fritas"></span></li>
+              </ul>
+            </div>
+
+            <div class="cat" id="carta-pizzas">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Pizzas</h3>
+                </div>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-porcion-muzza"><span class="item-nom">Porción de muzza</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="porcion-muzza"></span></li>
+                <li class="item" id="carta-porcion-muzza-3x2"><span class="item-nom">3x2 porción de muzza</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="porcion-muzza-3x2"></span></li>
+                <li class="item" id="carta-metro-muzza"><span class="item-nom">Metro de muzza</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="metro-muzza"></span></li>
+                <li class="item" id="carta-muzza-gustos"><span class="item-nom">Muzza con 2 gustos</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="muzza-gustos"></span></li>
+                <li class="item" id="carta-muzza-gustos-3x2"><span class="item-nom">3x2 muzza con 2 gustos</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="muzza-gustos-3x2"></span></li>
+                <li class="item" id="carta-metro-gustos"><span class="item-nom">Metro de muzza con 2 gustos</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="metro-gustos"></span></li>
+                <li class="item" id="carta-pizzeta"><span class="item-nom">Pizzeta familiar</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="pizzeta"></span></li>
+                <li class="item" id="carta-pizzeta-gustos"><span class="item-nom">Pizzeta familiar con 2 gustos</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="pizzeta-gustos"></span></li>
+              </ul>
+            </div>
+
+            <div class="cat" id="carta-picadas">
+              <div class="cat-cab">
+                <div>
+                  <h3 class="cat-tag">Picadas</h3>
+                </div>
+              </div>
+              <ul class="items">
+                <li class="item" id="carta-picada-boston"><span class="item-nom">Picada Boston</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="picada-boston"></span><small class="item-det">Arrolladitos primavera, tequeños, aros de cebolla, papas, pizzeta familiar con 2 gustos a elección y salsas</small></li>
+                <li class="item" id="carta-picada-mila"><span class="item-nom">Picada Mila</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="picada-mila"></span><small class="item-det">3 milas con 2 gustos a elección cada una y papas</small></li>
+                <li class="item" id="carta-picada-combineta"><span class="item-nom">Picada Combineta</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="picada-combineta"></span><small class="item-det">Picada mila, aros de cebolla, tequeños, papas y salsas</small></li>
+                <li class="item" id="carta-picada-vegetariana"><span class="item-nom">Picada Vegetariana</span><span class="item-guia" aria-hidden="true"></span><span class="item-pre num" data-precio="picada-vegetariana"></span><small class="item-det">Tequeños, papas, arrolladitos primavera y aros de cebolla</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="carta-nota revela" style="--i:3">Más que comida, un punto de encuentro. Precios en pesos uruguayos, de la carta de julio de 2026; pueden cambiar.</p>
+      </div>
+    </section>
+
+    <!-- 5 · CÓMO PEDIR · fondo noche, tres tapitas unidas por un camino -->
+    <section class="pedir" id="pedir" data-fondo="noche">
+      <div class="envoltura">
+        <div class="tit-fila">
+          <h2 class="revela" style="--i:0">Cómo pedir.</h2>
+          <p class="tit-nota revela" style="--i:1">Delivery de jueves a domingo.</p>
+        </div>
+
+        <ol class="pasos">
+          <li class="paso">
+            <span class="chapita chapita-paso" aria-hidden="true"><svg class="chapita-forma"><use href="#tapita"/></svg><b class="chapita-txt num">1</b></span>
+            <div class="paso-txt revela" style="--i:1">
+              <h3>Elegí en la carta</h3>
+              <p>Todos los precios están a la vista, arriba.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="chapita chapita-paso" aria-hidden="true"><svg class="chapita-forma"><use href="#tapita"/></svg><b class="chapita-txt num">2</b></span>
+            <div class="paso-txt revela" style="--i:2">
+              <h3>Pedí por PedidosYa o llamá</h3>
+              <p>Desde la app, o al 2605&nbsp;6488 si preferís hablar con nosotros.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="chapita chapita-paso" aria-hidden="true"><svg class="chapita-forma"><use href="#tapita"/></svg><b class="chapita-txt num">3</b></span>
+            <div class="paso-txt revela" style="--i:3">
+              <h3>Recibilo o caé a la esquina</h3>
+              <p>Te lo llevamos de jueves a domingo. Si no, te esperamos con la mesa lista.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="pedir-cta revela" style="--i:4">
+          <a class="btn btn-ambar" href="https://www.pedidosya.com.uy/restaurantes/montevideo/esquina-boston-d99b48c8-0b94-44dc-a107-87a52b0e3396-menu" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11h-11l-1-11Z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>
+            Pedir por PedidosYa
+          </a>
+          <a class="btn btn-luz" href="tel:+59826056488">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2-7 0-13-6-13-13 0-1 1-2 2-2Z"/></svg>
+            Llamar al 2605 6488
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · LO QUE DICEN · fondo papel -->
+    <section class="resenas" id="resenas" data-fondo="papel">
+      <div class="envoltura resenas-grilla">
+        <h2 class="resenas-tit revela" style="--i:0">Lo que dicen.</h2>
+
+        <figure class="resenas-foto revela" style="--i:1">
+          <picture>
+            <source type="image/webp" srcset="assets/img/resenas-terraza.webp">
+            <img src="assets/img/resenas-terraza.jpg" width="720" height="900" alt="Picada en la terraza de Esquina Boston, de noche, con las mesas llenas y guirnaldas de luces" loading="lazy">
+          </picture>
+          <div class="chapita chapita-google chapita-resenas" role="img" aria-label="4,9 de 5 en Google, con 30 opiniones">
+            <svg class="chapita-forma" aria-hidden="true"><use href="#tapita"/></svg>
+            <span class="chapita-txt" aria-hidden="true">
+              <b class="num">4,9</b>
+              <span class="chapita-estrellas"><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg></span>
+              <span class="chapita-pie">30 opiniones<br>en Google</span>
+            </span>
+          </div>
+        </figure>
+
+        <figure class="cita-grande revela" style="--i:2">
+          <span class="comilla-gigante" aria-hidden="true">“</span>
+          <blockquote>
+            <p class="cita-titular">La mejor milanesa de&nbsp;Uruguay!</p>
+            <p class="cita-resto">Porción gigante, súper súper abundante. Papas deliciosas. La atención un mil. Nuevo spot favorito en el barrio!</p>
+          </blockquote>
+          <figcaption class="cita-autor">
+            <span class="inicial" aria-hidden="true">L</span>
+            <span class="autor-txt"><b>Lucía Cáceres</b><span><span class="cita-estrellas" role="img" aria-label="5 estrellas"><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg></span> hace 4 meses en Google</span></span>
+          </figcaption>
+        </figure>
+
+        <div class="citas-par">
+          <figure class="cita revela" style="--i:3">
+            <blockquote><p>“Excelente lugar! Muy buena onda y la comida riquísima. Realmente abundantes porciones y todo muy fresco.”</p></blockquote>
+            <figcaption class="cita-autor">
+              <span class="inicial" aria-hidden="true">N</span>
+              <span class="autor-txt"><b>ndu ue</b><span><span class="cita-estrellas" role="img" aria-label="5 estrellas"><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg></span> hace 6 meses</span></span>
+            </figcaption>
+          </figure>
+          <figure class="cita revela" style="--i:4">
+            <blockquote><p>“Me encantó! Buenísimo todo, un montón de comida y la atención excelente! Muy satisfecha con todo, gracias!”</p></blockquote>
+            <figcaption class="cita-autor">
+              <span class="inicial" aria-hidden="true">A</span>
+              <span class="autor-txt"><b>Abril Otero Casagrande</b><span><span class="cita-estrellas" role="img" aria-label="5 estrellas"><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg><svg aria-hidden="true"><use href="#estrella"/></svg></span> hace 6 meses</span></span>
+            </figcaption>
+          </figure>
+          <a class="tit-link resenas-link revela" style="--i:5" href="https://www.google.com/maps/place/Esquina+Boston/@-34.8933267,-56.0651391,19z/data=!3m1!4b1!4m6!3m5!1s0x959f87ff5207aebb:0x1a92e1c03b4820a7!8m2!3d-34.8933267!4d-56.0651391!16s%2Fg%2F11z1322kdr" target="_blank" rel="noopener">
+            Ver las 30 opiniones en Google
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="resenas-banda" aria-hidden="true">
+        <p class="resenas-banda-pista"><span class="banda-tramo"><span>Porción gigante</span><svg><use href="#estrella"/></svg><span>Muy buena onda</span><svg><use href="#estrella"/></svg><span>Todo muy fresco</span><svg><use href="#estrella"/></svg><span>Un montón de comida</span><svg><use href="#estrella"/></svg><span>La atención un mil</span><svg><use href="#estrella"/></svg></span><span class="banda-tramo"><span>Porción gigante</span><svg><use href="#estrella"/></svg><span>Muy buena onda</span><svg><use href="#estrella"/></svg><span>Todo muy fresco</span><svg><use href="#estrella"/></svg><span>Un montón de comida</span><svg><use href="#estrella"/></svg><span>La atención un mil</span><svg><use href="#estrella"/></svg></span></p>
+      </div>
+    </section>
+
+    <!-- 7 · DÓNDE ESTAMOS · el mapa de fondo y la etiqueta encima -->
+    <section class="donde" id="donde" data-fondo="noche">
+      <div class="donde-mapa">
+        <iframe
+          src="https://www.google.com/maps?q=Esquina+Boston,+Av.+Bolivia+1400,+Montevideo,+Uruguay&z=16&output=embed"
+          title="Mapa: Esquina Boston en Av. Bolivia 1400 esq. Boston, Montevideo"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="envoltura donde-in">
+        <div class="etiqueta etiqueta-donde revela" style="--i:0" data-fondo="papel">
+          <h2>Dónde estamos.</h2>
+          <p class="donde-dir">Av. Bolivia 1400 esq. Boston<br>Montevideo</p>
+
+          <p class="estado estado-grande" data-estado data-abierto="false">
+            <span class="estado-luz" aria-hidden="true"></span>
+            <span data-estado-txt>Martes a domingo desde las 19:30</span>
+          </p>
+
+          <table class="horario" data-horario>
+            <caption class="solo-lector">Horario semanal</caption>
+            <tbody>
+              <tr data-dia="0"><th>Lunes</th><td>Cerrado</td></tr>
+              <tr data-dia="1"><th>Martes</th><td>19:30 a 23:00</td></tr>
+              <tr data-dia="2"><th>Miércoles</th><td>19:30 a 23:00</td></tr>
+              <tr data-dia="3"><th>Jueves</th><td>19:30 a 23:30</td></tr>
+              <tr data-dia="4"><th>Viernes</th><td>19:30 a 00:30</td></tr>
+              <tr data-dia="5"><th>Sábado</th><td>19:30 a 00:30</td></tr>
+              <tr data-dia="6"><th>Domingo</th><td>19:30 a 23:00</td></tr>
+            </tbody>
+          </table>
+
+          <ul class="donde-datos">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2-7 0-13-6-13-13 0-1 1-2 2-2Z"/></svg><a href="tel:+59826056488">2605 6488</a></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.4"/><circle cx="16.3" cy="7.7" r="0.6" fill="currentColor" stroke="none"/></svg><a href="https://www.instagram.com/esq.boston/" target="_blank" rel="noopener">@esq.boston</a></li>
+          </ul>
+
+          <div class="acciones">
+            <a class="btn btn-tinta" href="https://www.google.com/maps/dir/?api=1&destination=Esquina+Boston,+Av.+Bolivia+1400,+Montevideo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 0 0-13 0c0 5 6.5 11 6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+              Cómo llegar
+            </a>
+            <a class="btn btn-rojo" href="tel:+59826056488">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2-7 0-13-6-13-13 0-1 1-2 2-2Z"/></svg>
+              Llamar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura pie-grid">
+      <div class="pie-marca">
+        <a class="marca" href="#inicio">
+          <img src="assets/img/logo-esquina-boston.jpg" width="48" height="48" alt="">
+          <span>Esquina Boston</span>
+        </a>
+        <p>Nos vemos en la esquina de Bolivia y Boston.</p>
+      </div>
+
+      <nav class="pie-nav" aria-label="Pie de página">
+        <a href="#mega-mila">Mega Mila</a>
+        <a href="#carta">La carta</a>
+        <a href="#pedir">Cómo pedir</a>
+        <a href="#donde">Dónde estamos</a>
+      </nav>
+
+      <div class="pie-contacto">
+        <a href="tel:+59826056488">2605 6488</a>
+        <a href="https://www.instagram.com/esq.boston/" target="_blank" rel="noopener">@esq.boston</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Esquina+Boston,+Av.+Bolivia+1400,+Montevideo" target="_blank" rel="noopener">Av. Bolivia 1400 esq. Boston</a>
+      </div>
+    </div>
+    <div class="envoltura pie-base">
+      <p>© <span data-anio>2026</span> Esquina Boston</p>
+      <p>Carta y precios del menú de Instagram (julio de 2026) · sujetos a cambios.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

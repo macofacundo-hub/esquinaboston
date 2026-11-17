@@ -1,0 +1,2308 @@
+/* Esquina Boston · estilos
+   Dirección «etiqueta y chapita». Sistema completo en DESIGN.md.
+   Todo valor sale de las variables de :root. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("assets/fonts/archivo-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* color */
+  --noche: #140d08;
+  --noche-2: #231810;
+  --luz: #fff3df;
+  --luz-2: #e7d2b4;
+  --papel: #f0e9dd;
+  --papel-2: #e4d9c7;
+  --acero: #d2cec7;
+  --tinta: #1d1512;
+  --tinta-2: #5a483d;
+  --rojo: #c70015;
+  --rojo-2: #a50012;
+  --ambar: #ffb648;
+  --ambar-2: #ffc670;
+
+  /* tipografía */
+  --fuente: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --t-h2: clamp(2.25rem, 1.2rem + 4.2vw, 4.75rem);
+  --t-h3: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  --t-lg: clamp(1.125rem, 1.02rem + 0.42vw, 1.375rem);
+  --t-base: 1.0625rem;
+  --t-sm: 0.875rem;
+
+  /* espaciado, base 4 */
+  --e-1: 4px;
+  --e-2: 8px;
+  --e-3: 12px;
+  --e-4: 16px;
+  --e-5: 24px;
+  --e-6: 32px;
+  --e-7: 48px;
+  --e-8: 64px;
+  --e-9: 96px;
+  --margen: clamp(20px, 4.4vw, 64px);
+  --ancho: 1320px;
+  --aire: clamp(72px, 9vw, 128px);
+  --cab-alto: 76px;
+
+  /* forma */
+  --r-1: 10px;
+  --r-2: 16px;
+  --r-3: 28px;
+  --r-pild: 999px;
+  --arco: 50% 50% var(--r-3) var(--r-3) / 15% 15% 3% 3%;
+  --sombra-suave: 0 18px 40px -20px rgba(70, 40, 10, 0.45);
+  --sombra-etiqueta: 0 30px 60px -28px rgba(0, 0, 0, 0.75), 0 2px 0 rgba(255, 255, 255, 0.5) inset;
+
+  /* movimiento */
+  --salida: cubic-bezier(0.23, 1, 0.32, 1);
+  --d-presion: 140ms;
+  --d-ui: 180ms;
+  --d-entra: 600ms;
+}
+
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--tinta-2) var(--noche);
+  scroll-padding-top: var(--cab-alto);
+  /* la cinta animada no debe ensanchar la página en celulares */
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-size: var(--t-base);
+  line-height: 1.5;
+  background: var(--noche);
+  color: var(--luz);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* cifras: precios, medidas y horas */
+.num {
+  font-stretch: 68%;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.salto {
+  position: fixed;
+  left: var(--e-4);
+  top: var(--e-4);
+  z-index: 100;
+  padding: var(--e-3) var(--e-4);
+  border-radius: var(--r-1);
+  background: var(--luz);
+  color: var(--tinta);
+  font-weight: 700;
+  transform: translateY(-200%);
+}
+
+.salto:focus-visible {
+  transform: none;
+}
+
+.envoltura {
+  max-width: calc(var(--ancho) + var(--margen) * 2);
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+/* ---------- fondos: noche, papel, acero ---------- */
+
+[data-fondo="noche"] {
+  --texto: var(--luz);
+  --texto-2: var(--luz-2);
+  --linea: rgba(255, 243, 223, 0.2);
+  --hover: rgba(255, 243, 223, 0.1);
+  --foco: var(--ambar);
+  background: var(--noche);
+  color: var(--texto);
+}
+
+[data-fondo="papel"] {
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --linea: rgba(29, 21, 18, 0.16);
+  --hover: rgba(29, 21, 18, 0.06);
+  --foco: var(--rojo);
+  background: var(--papel);
+  color: var(--texto);
+}
+
+[data-fondo="acero"] {
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --linea: rgba(29, 21, 18, 0.2);
+  --hover: rgba(29, 21, 18, 0.07);
+  --foco: var(--tinta);
+  background: var(--acero);
+  color: var(--texto);
+}
+
+:focus-visible {
+  outline: 3px solid var(--foco, var(--ambar));
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--ambar);
+  color: var(--tinta);
+}
+
+[data-fondo="papel"] ::selection,
+[data-fondo="acero"] ::selection {
+  background: var(--rojo);
+  color: var(--papel);
+}
+
+/* ---------- títulos de sección ---------- */
+
+section h2 {
+  font-size: var(--t-h2);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
+  text-wrap: balance;
+}
+
+.tit-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--e-4) var(--e-6);
+}
+
+.tit-nota {
+  color: var(--texto-2);
+  font-size: var(--t-lg);
+}
+
+.tit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tit-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---------- botones ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 var(--e-5);
+  border: 0;
+  border-radius: var(--r-2);
+  font-size: var(--t-base);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--d-presion) var(--salida), background-color var(--d-ui) ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-luz {
+  background: var(--luz);
+  color: var(--tinta);
+}
+
+.btn-ambar {
+  background: var(--ambar);
+  color: var(--tinta);
+}
+
+.btn-tinta {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.btn-rojo {
+  background: var(--rojo);
+  color: #fff;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--e-3);
+}
+
+/* ---------- estado: abierto o cerrado, en vivo ---------- */
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.estado-luz {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.estado[data-abierto="true"] .estado-luz {
+  background: var(--ambar);
+  opacity: 1;
+}
+
+[data-fondo="papel"] .estado[data-abierto="true"] .estado-luz {
+  background: #1f8a3c;
+}
+
+/* ---------- la chapita: tapita de botella roja ---------- */
+
+.chapita {
+  --chap: 140px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--chap);
+  aspect-ratio: 1;
+  flex: none;
+}
+
+.chapita-forma {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--rojo);
+  stroke: none;
+  color: rgba(255, 243, 223, 0.55);
+  filter: drop-shadow(0 10px 12px rgba(20, 13, 8, 0.38));
+}
+
+.chapita-txt {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  color: var(--luz);
+  text-align: center;
+}
+
+.chapita-google .chapita-txt b {
+  font-size: calc(var(--chap) * 0.31);
+  font-weight: 800;
+  line-height: 0.95;
+}
+
+.chapita-estrellas {
+  display: flex;
+  gap: 1px;
+  margin-top: calc(var(--chap) * 0.025);
+}
+
+.chapita-estrellas svg {
+  width: calc(var(--chap) * 0.085);
+  height: calc(var(--chap) * 0.085);
+  fill: var(--luz);
+  stroke: none;
+}
+
+.chapita-pie {
+  margin-top: calc(var(--chap) * 0.03);
+  font-size: max(9px, calc(var(--chap) * 0.064));
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+/* ---------- cabecera ---------- */
+
+.cab {
+  --linea: rgba(255, 243, 223, 0.2);
+  --hover: rgba(255, 243, 223, 0.1);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--luz);
+  background-color: rgba(20, 13, 8, 0);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.cab[data-pegada="true"],
+.cab[data-menu-abierto="true"] {
+  background-color: var(--noche);
+  box-shadow: 0 1px 0 var(--linea);
+}
+
+.cab-in {
+  display: flex;
+  align-items: center;
+  gap: var(--e-4);
+  max-width: calc(var(--ancho) + var(--margen) * 2);
+  height: var(--cab-alto);
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-3);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.marca img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: var(--e-1);
+}
+
+.nav a {
+  padding: 10px 14px;
+  border-radius: var(--r-1);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--d-ui) ease;
+}
+
+.cab-acc {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  margin-left: auto;
+}
+
+.cab .estado {
+  padding: 8px 14px 8px 12px;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-pild);
+}
+
+.btn-cab {
+  min-height: 40px;
+  padding: 0 var(--e-5);
+  border-radius: var(--r-pild);
+  font-size: 0.9375rem;
+}
+
+.ico {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  transition: transform var(--d-presion) var(--salida), background-color var(--d-ui) ease;
+}
+
+.ico:active {
+  transform: scale(0.94);
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* =========================================================================
+   1 · PORTADA: la etiqueta sobre la fachada
+   ========================================================================= */
+
+.portada {
+  position: relative;
+  display: grid;
+}
+
+.portada-foto,
+.portada-velo,
+.portada-apagon {
+  position: absolute;
+  inset: 0;
+}
+
+.portada-foto {
+  overflow: clip;
+}
+
+.portada-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 32%;
+}
+
+.portada-velo {
+  background:
+    linear-gradient(to bottom, rgba(20, 13, 8, 0.4) 0, rgba(20, 13, 8, 0.7) 55%, rgba(20, 13, 8, 0.9) 100%),
+    radial-gradient(120% 90% at 50% 38%, rgba(20, 13, 8, 0.05), rgba(20, 13, 8, 0.6) 72%);
+}
+
+.portada-apagon {
+  background: var(--noche);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portada-in {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: calc(var(--ancho) + var(--margen) * 2);
+  margin-inline: auto;
+  padding: calc(var(--cab-alto) + var(--e-4)) var(--margen) clamp(24px, 3vw, 40px);
+}
+
+/* la etiqueta: arco arriba y filete impreso, como la de la botella */
+.etiqueta {
+  --etq-pad: clamp(20px, 4vw, 64px);
+  position: relative;
+  border-radius: var(--arco);
+  box-shadow: var(--sombra-etiqueta);
+}
+
+.etiqueta::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1.5px solid rgba(29, 21, 18, 0.28);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.etiqueta-portada {
+  padding: clamp(52px, 6vw, 76px) var(--etq-pad) clamp(22px, 2.6vw, 32px);
+  text-align: center;
+}
+
+.etiqueta-portada h1 {
+  max-width: 10ch;
+  margin-inline: auto;
+  font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.etiqueta-banda {
+  position: relative;
+  margin: clamp(18px, 2.4vw, 28px) calc(-1 * var(--etq-pad)) 0;
+  padding: 16px var(--etq-pad);
+  background: var(--rojo);
+}
+
+.etiqueta-banda p {
+  max-width: 30ch;
+  margin-inline: auto;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* bajo la banda: el plato al centro, los tamaños y la chapita a los lados */
+.etiqueta-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "plato plato"
+    "tam chap";
+  align-items: center;
+  gap: var(--e-4) var(--e-5);
+  margin-top: var(--e-3);
+}
+
+.etiqueta-plato {
+  grid-area: plato;
+  position: relative;
+  z-index: 2;
+  width: min(82%, 19rem);
+  margin-inline: auto;
+}
+
+.etiqueta-plato img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 22px rgba(28, 15, 7, 0.42));
+}
+
+.tamanos {
+  grid-area: tam;
+  display: grid;
+  gap: var(--e-2);
+  text-align: left;
+}
+
+.tamano {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-2);
+}
+
+.tamano dt {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.tamano dt small {
+  color: var(--texto-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* la línea de puntos que lleva al precio, como en la carta impresa */
+.tamano::after {
+  content: "";
+  order: 1;
+  flex: 1;
+  min-width: 12px;
+  border-bottom: 2px dotted rgba(29, 21, 18, 0.35);
+  transform: translateY(-0.3em);
+}
+
+.tamano dd {
+  order: 2;
+  color: var(--rojo);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.chapita-portada {
+  grid-area: chap;
+  --chap: clamp(116px, 11vw, 168px);
+  transform: rotate(-6deg);
+}
+
+.etiqueta-portada .acciones {
+  margin-top: clamp(20px, 2.6vw, 30px);
+}
+
+.etiqueta-portada .acciones .btn {
+  flex: 1 1 0;
+  max-width: 17rem;
+}
+
+.etiqueta-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--e-2) var(--e-5);
+  margin-top: var(--e-4);
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+}
+
+.etiqueta-meta .estado {
+  color: var(--texto);
+}
+
+.accesos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e-3) var(--e-4);
+  margin-top: var(--e-4);
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--linea);
+}
+
+.accesos a {
+  display: grid;
+  gap: 1px;
+  text-decoration: none;
+}
+
+.acc-nom {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.acc-pre {
+  color: var(--texto-2);
+  font-size: 0.8125rem;
+}
+
+.acc-pre .num {
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+/* celular y tableta: la chapita se apoya al costado del plato, los tamaños abajo a todo el ancho */
+@media (max-width: 899px) {
+  .etiqueta-cuerpo {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "plato"
+      "tam";
+  }
+
+  .chapita-portada {
+    position: absolute;
+    top: 4%;
+    right: -4px;
+    z-index: 3;
+    --chap: clamp(96px, 26vw, 128px);
+  }
+}
+
+/* escritorio: la etiqueta casi a todo el ancho, el plato parte la banda */
+@media (min-width: 900px) {
+  .etiqueta {
+    --arco: 50% 50% var(--r-3) var(--r-3) / 24% 24% 3% 3%;
+  }
+
+  .etiqueta-portada h1 {
+    max-width: none;
+  }
+
+  .etiqueta-portada {
+    --plato: clamp(260px, 25vw, 340px);
+  }
+
+  .etiqueta-banda {
+    padding-block: 26px;
+  }
+
+  .etiqueta-banda p {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--plato) minmax(0, 1fr);
+    gap: var(--e-5);
+    max-width: none;
+    font-size: clamp(1.125rem, 0.6rem + 0.9vw, 1.5rem);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .etiqueta-banda span:first-child {
+    text-align: left;
+  }
+
+  .etiqueta-banda span:last-child {
+    grid-column: 3;
+    text-align: right;
+  }
+
+  .etiqueta-cuerpo {
+    grid-template-columns: minmax(0, 1fr) var(--plato) minmax(0, 1fr);
+    grid-template-areas: "tam plato chap";
+    gap: var(--e-5);
+    margin-top: calc(var(--plato) * -0.27);
+  }
+
+  .etiqueta-plato {
+    width: 100%;
+  }
+
+  .tamanos {
+    align-self: end;
+    max-width: 19rem;
+    margin-bottom: var(--e-3);
+  }
+
+  .tamano dt {
+    font-size: 1.5rem;
+  }
+
+  .tamano dd {
+    font-size: 2.25rem;
+  }
+
+  .chapita-portada {
+    align-self: end;
+    justify-self: end;
+    margin-right: 6%;
+  }
+
+  .accesos {
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+  }
+}
+
+/* =========================================================================
+   2 · MILAXX
+   ========================================================================= */
+
+.milaxx {
+  padding-block: var(--aire);
+}
+
+.milaxx-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--e-9);
+}
+
+.milaxx-media {
+  display: grid;
+  place-items: center;
+}
+
+.milaxx-foto {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 45%;
+  border-radius: 50% 50% var(--r-3) var(--r-3) / 34% 34% 4% 4%;
+  box-shadow: var(--sombra-suave);
+}
+
+.milaxx-desc {
+  margin-top: var(--e-4);
+  max-width: 38ch;
+  color: var(--texto-2);
+  font-size: var(--t-lg);
+  line-height: 1.4;
+}
+
+.milaxx-desc q {
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.milaxx-tam {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--e-3);
+  margin-top: var(--e-7);
+}
+
+.tam {
+  display: grid;
+  gap: 2px;
+  padding: var(--e-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-2);
+}
+
+.tam-nom {
+  font-size: var(--t-h3);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.tam-med {
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+}
+
+.tam-pre {
+  margin-top: 4px;
+  color: var(--rojo);
+  font-size: 1.5rem;
+}
+
+.milaxx-gustos {
+  margin-top: var(--e-6);
+}
+
+.gustos-lead {
+  max-width: 44ch;
+  margin-bottom: var(--e-3);
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+  line-height: 1.4;
+}
+
+.gustos-grilla {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gustos-grilla li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 var(--e-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-pild);
+  color: var(--texto-2);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.milaxx-cta {
+  margin-top: var(--e-6);
+}
+
+/* =========================================================================
+   3 · NOVEDADES: la cinta infinita
+   ========================================================================= */
+
+.novedades {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min(100svh, 980px);
+  padding-block: clamp(56px, 7vw, 88px);
+  overflow: hidden;
+}
+
+.cinta {
+  margin-top: clamp(28px, 4vw, 48px);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.cinta-pista {
+  display: flex;
+  width: max-content;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: min-content;
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+.post img {
+  width: auto;
+  max-width: none;
+  height: clamp(250px, 44svh, 420px);
+  border-radius: var(--r-2);
+  object-fit: cover;
+  background: var(--noche-2);
+}
+
+.post-txt {
+  display: grid;
+  gap: 4px;
+  padding: var(--e-3) 2px 0;
+}
+
+.post-txt time {
+  color: var(--ambar);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.post-txt > span {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--luz-2);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* =========================================================================
+   4 · LA CARTA: la hoja impresa
+   ========================================================================= */
+
+.carta {
+  padding-block: var(--aire);
+}
+
+.hoja {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: clamp(32px, 4vw, 48px);
+  padding: clamp(32px, 4.4vw, 64px);
+  border-radius: var(--r-3);
+  box-shadow: 0 30px 60px -32px rgba(40, 25, 10, 0.55);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1.5px solid rgba(29, 21, 18, 0.22);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.hoja-col {
+  display: grid;
+  align-content: start;
+  gap: clamp(36px, 4vw, 56px);
+}
+
+.hoja-col:first-child {
+  padding-right: clamp(28px, 4vw, 64px);
+}
+
+.hoja-col + .hoja-col {
+  padding-left: clamp(28px, 4vw, 64px);
+  border-left: 1px dashed rgba(29, 21, 18, 0.25);
+}
+
+.cat {
+  scroll-margin-top: calc(var(--cab-alto) + var(--e-4));
+}
+
+.cat-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-4);
+  margin-bottom: var(--e-3);
+}
+
+/* el título de cada categoría, en la letra angosta de la carta impresa */
+.cat-tag {
+  display: inline-block;
+  padding: 10px 16px 7px;
+  border-radius: 6px;
+  background: var(--rojo);
+  color: #fff;
+  font-size: clamp(1.75rem, 1rem + 2vw, 2.625rem);
+  font-stretch: 66%;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+
+.cat-tag-tinta {
+  background: var(--tinta);
+}
+
+.cat-desc {
+  max-width: 34ch;
+  margin-top: var(--e-3);
+  color: var(--texto-2);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.cat-foto {
+  width: clamp(130px, 14vw, 200px);
+  flex: none;
+  margin: -24px -8px -12px 0;
+}
+
+.cat-foto img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 14px rgba(28, 15, 7, 0.35));
+}
+
+.cat-foto-papas {
+  width: clamp(150px, 16vw, 230px);
+  margin-top: -8px;
+}
+
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(14px, 1fr) auto;
+  align-items: baseline;
+  column-gap: 10px;
+  padding-block: 10px;
+  scroll-margin-top: calc(var(--cab-alto) + var(--e-4));
+}
+
+.item-nom {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.item-guia {
+  align-self: end;
+  margin-bottom: 0.4em;
+  border-bottom: 2px dotted rgba(29, 21, 18, 0.32);
+}
+
+.item-pre {
+  color: var(--rojo);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.item-solo {
+  grid-template-columns: 1fr;
+}
+
+.item-pre-texto {
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.item-det {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+}
+
+.cat-gustos {
+  margin-top: var(--e-3);
+  padding-top: var(--e-3);
+  border-top: 1px solid var(--linea);
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+  line-height: 1.55;
+}
+
+.cat-gustos b {
+  color: var(--texto);
+}
+
+.carta-nota {
+  margin-top: var(--e-5);
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+  text-align: center;
+}
+
+/* =========================================================================
+   5 · CÓMO PEDIR: tres tapitas unidas por un camino
+   ========================================================================= */
+
+.pedir {
+  padding-block: var(--aire);
+}
+
+.pasos {
+  --chap: clamp(84px, 7.5vw, 108px);
+  --gap: clamp(24px, 4vw, 64px);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+  margin: clamp(48px, 6vw, 80px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* el camino punteado entre la primera y la última tapita */
+.pasos::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--chap) / 2);
+  left: calc(var(--chap) / 2);
+  right: calc((100% - 2 * var(--gap)) / 3 - var(--chap) / 2);
+  border-top: 2px dashed rgba(255, 243, 223, 0.3);
+  transform-origin: left center;
+}
+
+.paso {
+  position: relative;
+}
+
+.chapita-paso {
+  --chap: inherit;
+}
+
+.chapita-paso .chapita-txt {
+  font-size: calc(var(--chap) * 0.44);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.paso-txt {
+  margin-top: var(--e-5);
+}
+
+.paso h3 {
+  font-size: var(--t-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.paso p {
+  max-width: 30ch;
+  margin-top: var(--e-2);
+  color: var(--texto-2);
+  font-size: var(--t-base);
+  line-height: 1.45;
+}
+
+.pedir-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--linea);
+}
+
+/* =========================================================================
+   6 · LO QUE DICEN
+   ========================================================================= */
+
+.resenas {
+  position: relative;
+  padding-top: var(--aire);
+  padding-bottom: clamp(56px, 7vw, 104px);
+  overflow: clip;
+}
+
+.resenas-grilla {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-areas:
+    "foto tit"
+    "foto cita"
+    "foto par";
+  grid-template-rows: auto auto 1fr;
+  column-gap: clamp(40px, 6vw, 104px);
+}
+
+.resenas-tit {
+  grid-area: tit;
+}
+
+/* Foto real de la terraza, con la chapita del 4,9 estampada en la esquina */
+.resenas-foto {
+  grid-area: foto;
+  position: relative;
+  align-self: stretch;
+  margin-top: 8px;
+}
+
+.resenas-foto picture {
+  display: block;
+  height: 100%;
+}
+
+.resenas-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  object-position: 50% 40%;
+  border-radius: 28px;
+  box-shadow: 0 1px 0 rgba(29, 21, 18, 0.08), 0 28px 56px -28px rgba(29, 21, 18, 0.55);
+}
+
+.chapita-resenas {
+  position: absolute;
+  top: -32px;
+  right: -32px;
+  --chap: clamp(120px, 10.5vw, 156px);
+  transform: rotate(10deg);
+}
+
+/* Cita principal: comilla gigante en rojo y titular pesado */
+.cita-grande {
+  grid-area: cita;
+  position: relative;
+  margin-top: clamp(24px, 3vw, 40px);
+  padding-top: clamp(72px, 4rem + 3vw, 112px);
+}
+
+.comilla-gigante {
+  position: absolute;
+  top: 0;
+  left: -0.05em;
+  height: 0.46em;
+  overflow: hidden;
+  color: var(--rojo);
+  font-size: clamp(8rem, 4rem + 9vw, 13rem);
+  font-weight: 900;
+  line-height: 0.82;
+}
+
+.cita-titular {
+  font-size: clamp(2.375rem, 1rem + 4.2vw, 5rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.cita-resto {
+  max-width: 46ch;
+  margin-top: var(--e-5);
+  color: var(--texto-2);
+  font-size: var(--t-lg);
+  line-height: 1.45;
+}
+
+.cita-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--e-5);
+  color: var(--texto-2);
+  font-size: var(--t-sm);
+}
+
+.inicial {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: var(--papel);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.cita-grande .inicial {
+  width: 48px;
+  height: 48px;
+  background: var(--rojo);
+  font-size: 1.25rem;
+}
+
+.autor-txt {
+  display: grid;
+  gap: 3px;
+}
+
+.autor-txt b {
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+.autor-txt > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.cita-estrellas {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.cita-estrellas svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--rojo);
+  stroke: none;
+}
+
+/* Las otras dos, separadas por filetes como los renglones de la carta */
+.citas-par {
+  grid-area: par;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  column-gap: clamp(28px, 4vw, 56px);
+  row-gap: var(--e-6);
+  margin-top: clamp(36px, 4vw, 56px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 2px dotted var(--linea);
+}
+
+.cita p {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.cita + .cita {
+  margin-left: calc(clamp(28px, 4vw, 56px) * -0.5);
+  padding-left: calc(clamp(28px, 4vw, 56px) * 0.5);
+  border-left: 1px solid var(--linea);
+}
+
+.resenas-link {
+  grid-column: 1 / -1;
+  justify-self: start;
+  color: var(--rojo);
+}
+
+/* Banda roja al pie con frases de las reseñas: el eco de la banda de la portada */
+.resenas-banda {
+  margin-top: clamp(64px, 8vw, 112px);
+  margin-inline: -4vw;
+  padding-block: 18px;
+  background: var(--rojo);
+  color: var(--papel);
+  transform: rotate(-1.5deg);
+}
+
+.resenas-banda p {
+  display: flex;
+  width: max-content;
+  font-size: clamp(1.125rem, 0.8rem + 1.2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.banda-tramo {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  padding-right: clamp(16px, 2vw, 28px);
+}
+
+.resenas-banda svg {
+  flex: none;
+  width: 0.8em;
+  height: 0.8em;
+  fill: var(--ambar);
+  stroke: none;
+}
+
+@media (max-width: 899px) {
+  .resenas-grilla {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "tit" "foto" "cita" "par";
+    grid-template-rows: none;
+  }
+
+  .resenas-foto {
+    margin-top: var(--e-6);
+    margin-right: 24px;
+  }
+
+  .resenas-foto img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 5 / 4;
+  }
+
+  .chapita-resenas {
+    top: -24px;
+    right: -24px;
+    --chap: 112px;
+  }
+}
+
+@media (max-width: 600px) {
+  .citas-par {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cita + .cita {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
+    padding-top: var(--e-6);
+    border-top: 1px solid var(--linea);
+  }
+}
+
+/* =========================================================================
+   7 · DÓNDE ESTAMOS: el mapa de fondo y la etiqueta encima
+   ========================================================================= */
+
+.donde {
+  position: relative;
+  display: grid;
+  min-height: clamp(680px, 86svh, 860px);
+}
+
+.donde-mapa {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  background: var(--noche-2);
+}
+
+.donde-mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.55) brightness(0.92) contrast(0.95);
+}
+
+.donde-in {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding-block: clamp(56px, 7vw, 96px);
+  pointer-events: none;
+}
+
+.etiqueta-donde {
+  --etq-pad: clamp(24px, 3vw, 44px);
+  width: min(100%, 30rem);
+  padding: clamp(52px, 5vw, 64px) var(--etq-pad) clamp(24px, 2.4vw, 32px);
+  pointer-events: auto;
+}
+
+.etiqueta-donde h2 {
+  font-size: clamp(2.25rem, 1.4rem + 2vw, 3rem);
+  text-align: center;
+}
+
+.donde-dir {
+  margin-top: var(--e-2);
+  font-size: var(--t-base);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.estado-grande {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--e-4);
+  padding: 10px 14px;
+  border-radius: var(--r-pild);
+  background: var(--papel-2);
+  font-size: 0.9375rem;
+  text-align: center;
+  white-space: normal;
+}
+
+.horario {
+  width: 100%;
+  margin-top: var(--e-4);
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.horario tr + tr {
+  border-top: 1px dashed var(--linea);
+}
+
+.horario th,
+.horario td {
+  padding: 5px 4px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.horario th {
+  color: var(--texto-2);
+  font-weight: 600;
+}
+
+.horario td {
+  text-align: right;
+  font-stretch: 80%;
+  font-variant-numeric: tabular-nums;
+}
+
+.horario tr[data-hoy="true"] th,
+.horario tr[data-hoy="true"] td {
+  color: var(--rojo);
+  font-weight: 800;
+}
+
+.donde-datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--e-3) var(--e-6);
+  margin: var(--e-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.donde-datos li {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+}
+
+.donde-datos svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--rojo);
+}
+
+.donde-datos a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.etiqueta-donde .acciones {
+  margin-top: var(--e-4);
+}
+
+.etiqueta-donde .acciones .btn {
+  flex: 1 1 0;
+}
+
+/* =========================================================================
+   PIE
+   ========================================================================= */
+
+.pie {
+  background: #0b0704;
+  color: var(--luz-2);
+}
+
+.pie-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: var(--e-7);
+  padding-block: var(--e-9) var(--e-7);
+}
+
+.pie-marca .marca {
+  color: var(--luz);
+}
+
+.pie-marca p {
+  max-width: 24ch;
+  margin-top: var(--e-3);
+  font-size: 0.9375rem;
+}
+
+.pie-nav,
+.pie-contacto {
+  display: grid;
+  align-content: start;
+  gap: var(--e-3);
+}
+
+.pie-nav a,
+.pie-contacto a {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pie-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--e-2) var(--e-6);
+  padding-block: var(--e-5);
+  border-top: 1px solid rgba(255, 243, 223, 0.12);
+  color: rgba(231, 210, 180, 0.6);
+  font-size: 0.8125rem;
+}
+
+/* =========================================================================
+   ESTADOS CON PUNTERO FINO
+   ========================================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .nav a:hover,
+  .ico:hover {
+    background-color: var(--hover);
+  }
+
+  .btn-luz:hover {
+    background: #fff;
+  }
+
+  .btn-ambar:hover {
+    background: var(--ambar-2);
+  }
+
+  .btn-tinta:hover {
+    background: #000;
+  }
+
+  .btn-rojo:hover {
+    background: var(--rojo-2);
+  }
+
+  .accesos a:hover .acc-nom,
+  .tit-link:hover,
+  .pie a:hover {
+    color: var(--rojo);
+  }
+
+  [data-fondo="noche"] .tit-link:hover,
+  .pie a:hover {
+    color: var(--ambar);
+  }
+
+  .post:hover .post-txt > span {
+    color: var(--luz);
+  }
+}
+
+/* =========================================================================
+   MOVIMIENTO
+   ========================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .entra {
+    animation: entra var(--d-entra) var(--salida) both;
+    animation-delay: calc(160ms + var(--i, 0) * 60ms);
+  }
+
+  /* firma 1: se prende la luz de la fachada */
+  .portada-apagon {
+    animation: encender 1100ms var(--salida) both;
+  }
+
+  .portada-foto img {
+    animation: asentar 1600ms var(--salida) both;
+  }
+
+  /* firma 2: la chapita se estampa sobre la etiqueta */
+  .chapita-portada {
+    animation: estampar 480ms var(--salida) 820ms both;
+  }
+
+  /* aparición al bajar: oculto hasta que la sección entra en pantalla */
+  html.js section:not([data-visto]) .revela {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  [data-visto] .revela {
+    animation: entra var(--d-entra) var(--salida) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+
+  /* firma 3: el camino se dibuja y las tapitas se estampan una tras otra */
+  html.js .pedir:not([data-visto]) .pasos::before {
+    transform: scaleX(0);
+  }
+
+  html.js .pedir:not([data-visto]) .chapita-paso {
+    opacity: 0;
+  }
+
+  .pedir[data-visto] .pasos::before {
+    animation: camino 1100ms var(--salida) 150ms both;
+  }
+
+  .pedir[data-visto] .chapita-paso {
+    animation: estampar-paso 480ms var(--salida) both;
+  }
+
+  .pedir[data-visto] .paso:nth-child(1) .chapita-paso { animation-delay: 150ms; }
+  .pedir[data-visto] .paso:nth-child(2) .chapita-paso { animation-delay: 480ms; }
+  .pedir[data-visto] .paso:nth-child(3) .chapita-paso { animation-delay: 810ms; }
+
+  /* la cinta de Instagram corre hacia la derecha, sin fin; se frena al pasar el mouse */
+  html.js .cinta[data-lista] .cinta-pista {
+    animation: cinta var(--cinta-dur, 60s) linear infinite;
+  }
+
+  .cinta:hover .cinta-pista,
+  .cinta:focus-within .cinta-pista {
+    animation-play-state: paused;
+  }
+
+  /* la luz del estado late suave cuando está abierto */
+  .estado[data-abierto="true"] .estado-luz::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.45;
+    animation: latido 1800ms ease-out infinite;
+  }
+
+  .nav[data-abierta="true"] {
+    transition: opacity var(--d-ui) var(--salida), transform var(--d-ui) var(--salida);
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entra,
+  .chapita-portada,
+  [data-visto] .revela {
+    animation: fundido 200ms ease both;
+  }
+
+  /* sin movimiento, la cinta se desliza con el dedo o la rueda */
+  .cinta {
+    overflow-x: auto;
+  }
+}
+
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes encender {
+  from {
+    opacity: 0.86;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes asentar {
+  from {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes estampar {
+  from {
+    opacity: 0;
+    transform: rotate(-24deg) scale(1.35);
+  }
+}
+
+@keyframes estampar-paso {
+  from {
+    opacity: 0;
+    transform: rotate(-30deg) scale(1.4);
+  }
+}
+
+@keyframes camino {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes cinta {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes latido {
+  from {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+
+  to {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes fundido {
+  from {
+    opacity: 0;
+  }
+}
+
+/* =========================================================================
+   MOVIMIENTO · SEGUNDA MANO
+   Todo con transform, opacity y clip-path. Nada se mueve con «reducir movimiento».
+   ========================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Portada, en coreografía: la etiqueta sube, la banda se abre desde el centro,
+     la Mega Mila cae girando sobre la banda, los tamaños entran y sus puntos se dibujan. */
+  .etiqueta-portada .etiqueta-banda {
+    animation: banda-abre 720ms var(--salida) 260ms both;
+  }
+
+  .etiqueta-portada .etiqueta-plato img {
+    animation: plato-cae 950ms cubic-bezier(0.34, 1.32, 0.64, 1) 420ms both;
+  }
+
+  .etiqueta-portada .tamano {
+    animation: entra 520ms var(--salida) both;
+    animation-delay: calc(760ms + var(--n, 0) * 90ms);
+  }
+
+  .etiqueta-portada .tamano::after {
+    transform-origin: left center;
+    animation: puntos 640ms var(--salida) both;
+    animation-delay: calc(880ms + var(--n, 0) * 90ms);
+  }
+
+  /* al bajar, la milanesa gira despacio, como un plato que se acomoda en la mesa */
+  @supports (animation-timeline: scroll()) {
+    .etiqueta-portada .etiqueta-plato picture {
+      display: block;
+      animation: plato-gira linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+
+  /* Mega Mila: los gustos aparecen de a uno, como fichas sobre la mesa */
+  html.js .milaxx:not([data-visto]) .gustos-grilla li {
+    opacity: 0;
+  }
+
+  .milaxx[data-visto] .gustos-grilla li {
+    animation: ficha 420ms var(--salida) both;
+    animation-delay: calc(380ms + var(--n, 0) * 35ms);
+  }
+
+  /* Carta: cada categoría se estampa al llegar y sus renglones bajan en cascada */
+  html.js .cat:not([data-visto]) .cat-tag,
+  html.js .cat:not([data-visto]) .item,
+  html.js .cat:not([data-visto]) .cat-foto {
+    opacity: 0;
+  }
+
+  .cat[data-visto] .cat-tag {
+    animation: estampar-tag 460ms var(--salida) both;
+  }
+
+  .cat[data-visto] .cat-foto {
+    animation: plato-cae 900ms cubic-bezier(0.34, 1.32, 0.64, 1) 120ms both;
+  }
+
+  .cat[data-visto] .item {
+    animation: entra 460ms var(--salida) both;
+    animation-delay: calc(140ms + var(--n, 0) * 45ms);
+  }
+
+  .cat[data-visto] .item-guia {
+    transform-origin: left center;
+    animation: puntos-guia 560ms var(--salida) both;
+    animation-delay: calc(240ms + var(--n, 0) * 45ms);
+  }
+
+  /* Lo que dicen: la comilla cae, la chapita se estampa sobre la foto y la banda corre */
+  html.js .resenas:not([data-visto]) .comilla-gigante,
+  html.js .resenas:not([data-visto]) .chapita-resenas {
+    opacity: 0;
+  }
+
+  .resenas[data-visto] .comilla-gigante {
+    animation: comilla-cae 700ms cubic-bezier(0.34, 1.4, 0.64, 1) 260ms both;
+  }
+
+  .resenas[data-visto] .chapita-resenas {
+    animation: estampar-resenas 480ms var(--salida) 620ms backwards;
+  }
+
+  .chapita-portada {
+    animation-fill-mode: backwards;
+  }
+
+  .resenas-banda-pista {
+    animation: banda-corre 46s linear infinite;
+  }
+
+  /* Puntero fino: respuestas chicas al pasar el mouse */
+  @media (hover: hover) and (pointer: fine) {
+    .post img {
+      transition: transform 360ms var(--salida);
+    }
+
+    .post:hover img {
+      transform: translateY(-6px);
+    }
+
+    .chapita {
+      transition: transform 420ms cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+
+    .chapita-portada:hover {
+      transform: rotate(-12deg) scale(1.05);
+    }
+
+    .chapita-resenas:hover {
+      transform: rotate(-4deg) scale(1.05);
+    }
+
+    .btn svg {
+      transition: transform 220ms var(--salida);
+    }
+
+    .btn:hover svg {
+      transform: translateX(2px) rotate(-6deg);
+    }
+
+    .tit-link svg {
+      transition: transform 220ms var(--salida);
+    }
+
+    .tit-link:hover svg {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+@keyframes banda-abre {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes plato-cae {
+  from {
+    opacity: 0;
+    transform: translateY(-36px) rotate(-22deg) scale(0.88);
+  }
+}
+
+@keyframes plato-gira {
+  to {
+    transform: rotate(28deg);
+  }
+}
+
+@keyframes puntos {
+  from {
+    transform: translateY(-0.3em) scaleX(0);
+  }
+
+  to {
+    transform: translateY(-0.3em) scaleX(1);
+  }
+}
+
+@keyframes puntos-guia {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes ficha {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.86);
+  }
+}
+
+@keyframes estampar-tag {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(1.25);
+  }
+}
+
+@keyframes comilla-cae {
+  from {
+    opacity: 0;
+    transform: translateY(-28px) rotate(-8deg);
+  }
+}
+
+@keyframes estampar-resenas {
+  from {
+    opacity: 0;
+    transform: rotate(-24deg) scale(1.35);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes banda-corre {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================================
+   TABLETA Y CELULAR
+   ========================================================================= */
+
+@media (max-width: 1100px) {
+  .menu-btn {
+    display: grid;
+  }
+
+  .nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--e-2) var(--margen) var(--e-5);
+    background: var(--noche);
+    box-shadow: 0 1px 0 var(--linea), 0 30px 40px -20px rgba(0, 0, 0, 0.7);
+  }
+
+  .nav[data-abierta="true"] {
+    display: flex;
+  }
+
+  .nav a {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 0;
+    border-bottom: 1px solid var(--linea);
+    border-radius: 0;
+    font-size: 1.375rem;
+    font-weight: 700;
+  }
+
+  .nav a:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .milaxx-grid {
+    grid-template-columns: 1fr;
+    gap: var(--e-7);
+  }
+
+  .milaxx-foto {
+    max-width: 420px;
+    aspect-ratio: 1;
+    border-radius: 50% 50% var(--r-3) var(--r-3) / 42% 42% 6% 6%;
+  }
+
+  .hoja {
+    grid-template-columns: 1fr;
+  }
+
+  .hoja-col:first-child {
+    padding-right: 0;
+  }
+
+  .hoja-col + .hoja-col {
+    margin: clamp(36px, 4vw, 56px) 0 0;
+    padding: clamp(36px, 4vw, 56px) 0 0;
+    border-left: 0;
+    border-top: 1px dashed rgba(29, 21, 18, 0.25);
+  }
+
+  .pie-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pie-marca {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --cab-alto: 64px;
+  }
+
+  .cab .estado,
+  .btn-cab {
+    display: none;
+  }
+
+  .marca img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .marca {
+    gap: var(--e-2);
+    font-size: 1.0625rem;
+  }
+
+  .btn {
+    padding: var(--e-2) var(--e-4);
+    font-size: 1rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .etiqueta-portada .acciones .btn {
+    max-width: none;
+  }
+
+  .milaxx-tam {
+    grid-template-columns: 1fr;
+  }
+
+  /* los pasos en columna, el camino baja de tapita en tapita */
+  .pasos {
+    grid-template-columns: 1fr;
+  }
+
+  .pasos::before {
+    display: none;
+  }
+
+  .paso {
+    display: grid;
+    grid-template-columns: var(--chap) minmax(0, 1fr);
+    gap: var(--e-4);
+    align-items: center;
+  }
+
+  .paso:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: var(--chap);
+    bottom: calc(-1 * var(--gap));
+    left: calc(var(--chap) / 2);
+    border-left: 2px dashed rgba(255, 243, 223, 0.3);
+  }
+
+  .paso-txt {
+    margin-top: 0;
+  }
+
+  .pedir-cta .btn {
+    flex: 1 1 100%;
+  }
+
+
+  .donde {
+    display: block;
+    min-height: 0;
+  }
+
+  .donde-mapa {
+    position: relative;
+    height: 360px;
+  }
+
+  .donde-in {
+    margin-top: -72px;
+    padding-top: 0;
+  }
+
+  .etiqueta-donde {
+    width: 100%;
+  }
+
+  .pie-grid {
+    grid-template-columns: 1fr;
+    gap: var(--e-5);
+  }
+}
+
+@media (max-width: 440px) {
+  .etiqueta-portada .acciones .btn svg {
+    display: none;
+  }
+
+  .hoja {
+    padding: 28px 20px;
+  }
+
+  .cat-foto {
+    width: 110px;
+    margin-right: 0;
+  }
+}
